@@ -1,0 +1,14 @@
+<div x-data="{name: ''}">
+    <label>Your name</label>
+    <input type = "text" x-model="name" x-ref="nameInput">
+    <p>Hi my name is <span x-text="name || '______________'"></span> !</p>
+    <button @click="$refs.nameInput.focus()">set focus</button>
+</div>
+
+{# alternatively 
+
+<div x-data="{name: ''}">
+    <label>Your name</label>
+    <input type = "text" :value="name" @input="name = $event.target.value">
+    <p>Hi my name is <span x-text="name || '______________'"></span> !</p>
+</div> #}

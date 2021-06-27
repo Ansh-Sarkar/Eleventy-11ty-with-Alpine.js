@@ -1,0 +1,8 @@
+<div x-data="{count: 0}">
+    <button @click="count--">-1<button>
+    <button @click="count++">+1</button>
+    <p> The current count is <strong x-text="count"></strong></p>
+    <button @click="count = 0">reset</button>
+</div>
+    {# wont work here as it is outside the component scope #}
+    {# <button @click="count = 0">reset</button> #}

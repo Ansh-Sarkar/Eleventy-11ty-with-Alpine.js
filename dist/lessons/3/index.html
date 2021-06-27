@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="lesson-02">
+  <main class="p-8 max-w-4xl">
+    
+<div x-data="tabs">
+    <div>
+        <template x-for="tab in tabs" :key="tab.id">
+            <button 
+                @click="activeTab = tab.id"
+                :class="{ 'active' : getActiveStatus(tab.id) }"
+                x-text="tab.title"
+            ></button>
+        </template>
+    </div>
+    <div>
+        <template x-for="tab in tabs" :key="tab.id">
+            <div x-show="getActiveStatus(tab.id)">
+            <p x-text="tab.text"></p>
+        </div>
+        </template>
+    </div>
+</div>
+
+<script>
+    function tabs(){
+        return {
+            activeTab: 0,
+            tabs: [
+                {
+                    id:0 ,
+                    title:'Tab 1',
+                    text:'I am the content of Tab 1'
+                },
+                {
+                    id:1 ,
+                    title:'Tab 2',
+                    text:'I am the content of Tab 2'
+                },
+                {
+                    id:2 ,
+                    title:'Tab 3',
+                    text:'I am the content of Tab 3'
+                }
+            ],
+            getActiveStatus(id) {
+                return  id === this.activeTab;
+            };
+        }
+    }
+</script>
+  </main>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+</body>
+</html>
